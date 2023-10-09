@@ -48,6 +48,13 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+        if (Auth::user()->etat !== 1) {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'inactive' => trans('auth.inactive'),
+            ]);
+        }
 
         RateLimiter::clear($this->throttleKey());
     }

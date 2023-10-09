@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string("nameDoc");
+            $table->string("comment");
+            $table->string("image")->nullable();
+            $table->integer("sender")->default(0);
+            $table->integer("receiver")->default(0);
+            $table->unsignedTinyInteger("statut")->default(0)->comment('0: prossess, 1: send, 2: receive');
+            $table->unsignedTinyInteger("etat")->default(0)->comment('0: inProcess, 1: archive');
             $table->timestamps();
         });
     }

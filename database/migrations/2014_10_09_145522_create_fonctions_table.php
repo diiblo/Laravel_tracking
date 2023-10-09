@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('fonctions', function (Blueprint $table) {
             $table->id();
+            $table->string("nameFon");
+            $table->unsignedTinyInteger("etat")->default(1)->comment('0: disable, 1: enable');
             $table->timestamps();
         });
     }

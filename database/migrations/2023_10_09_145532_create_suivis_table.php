@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('suivis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('document_id')->constrained()->onDelete('cascade');
+            $table->string("sender");
+            $table->string("receiver");
+            $table->unsignedTinyInteger("statut")->default(0)->comment('0: prossess, 1: send, 2: receive');
+            $table->unsignedTinyInteger("etat")->default(0)->comment('0: inProcess, 1: archive');
             $table->timestamps();
         });
     }
