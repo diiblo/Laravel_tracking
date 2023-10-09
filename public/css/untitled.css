@@ -1,0 +1,6 @@
+.bg-delotrans-gradient-primary {
+  background-color: #266ba2;
+  background-image: linear-gradient(180deg, #266ba2 10%, #224abe 100%);
+  background-size: cover;
+}
+
